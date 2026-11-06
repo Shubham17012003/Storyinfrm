@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shubham Pandey — Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f0ea;--fg:#1b1a18;--mute:#7a746a;--line:#d9d2c6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0d0c;--fg:#ece6dc;--mute:#8d867a;--line:#2a2724}}
+:root[data-theme="dark"]{--bg:#0e0d0c;--fg:#ece6dc;--mute:#8d867a;--line:#2a2724}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:300;line-height:1.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+header a{color:var(--fg);text-decoration:none;margin-left:20px;color:var(--mute)}
+header a:hover{color:var(--fg)}
+.hero{padding:12vh 5vw 8vh}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,12vw,132px);line-height:.95;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--mute)}
+.hero p{margin-top:28px;max-width:420px;color:var(--mute);font-size:15px}
+.tabs{display:flex;gap:6px 22px;flex-wrap:wrap;padding:0 5vw 28px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.tabs button{background:none;border:0;border-bottom:1px solid transparent;color:var(--mute);font:inherit;letter-spacing:inherit;text-transform:inherit;padding:6px 0;cursor:pointer}
+.tabs button.on{color:var(--fg);border-color:var(--fg)}
+.grid{columns:3 260px;column-gap:14px;padding:0 5vw}
+.tile{break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;cursor:pointer;background-size:cover;background-position:center}
+.tile img{display:block;width:100%;transition:transform .8s ease}
+.tile:hover img,.tile:hover .ph{transform:scale(1.04)}
+.ph{width:100%;transition:transform .8s ease}
+.cap{position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .4s;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.tile:hover .cap{opacity:1}
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;padding:14vh 5vw;border-top:1px solid var(--line);margin-top:10vh}
+.about h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,6vw,56px);line-height:1.05}
+.about p{color:var(--mute);max-width:440px}
+.about a{color:var(--fg)}
+footer{padding:0 5vw 40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+#lb{position:fixed;inset:0;background:rgba(10,9,8,.94);display:none;align-items:center;justify-content:center;z-index:9;padding:5vw}
+#lb.open{display:flex}
+#lb .big{width:min(92vw,720px);aspect-ratio:4/5;background-size:cover;background-position:center}
+#lb img{max-width:92vw;max-height:88vh}
+#lb span{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);right:24px;color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<header>
+  <div>Shubham Pandey</div>
+  <nav><a href="#work">Work</a><a href="#about">About</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Light, <em>people</em><br>&amp; places.</h1>
+  <p>I tell stories through frames.<br>Portraits, travel, street &amp; festivals.</p>
+</section>
+
+<div class="tabs" id="tabs"></div>
+<div class="grid" id="work"></div>
+
+<section class="about" id="about">
+  <h2>Hello, I’m<br>Shubham.</h2>
+  <div>
+    <p>Photographer. I tell stories through frames.<br>Based in Mumbai, India 🇮🇳</p>
+    <p style="margin-top:18px">For collaborations — DM<br><a href="https://instagram.com/storyinfrm" target="_blank" rel="noopener">@storyinfrm</a> · <a href="https://wa.me/919967953304" target="_blank" rel="noopener">WhatsApp +91 99679 53304</a></p>
+  </div>
+</section>
+<footer>© Shubham Pandey · Mumbai</footer>
+
+<div id="lb"><span>Close ✕</span><div id="lbc"></div></div>
+
+<script>
+// To use your photos: set src to an image file path/URL once you host this page with your images.
+// Until then, tinted placeholders show the layout.
+var photos=[
+ {c:"Portraits",t:"Golden hour",h:"125%",g:["#d9a07a","#7a3e2b"]},
+ {c:"Travel",t:"Mountain mist",h:"80%",g:["#8aa4a0","#27403f"]},
+ {c:"Street",t:"Rain, 6 pm",h:"140%",g:["#6b7b92","#161c2b"]},
+ {c:"Festivals",t:"Colour night",h:"100%",g:["#e0558a","#3b1a6b"]},
+ {c:"Portraits",t:"Quiet look",h:"90%",g:["#b9a58f","#4a3b30"]},
+ {c:"Street",t:"Crossing",h:"120%",g:["#a8a29a","#2c2a28"]},
+ {c:"Travel",t:"Coastline",h:"75%",g:["#e4b98a","#3c6a85"]},
+ {c:"Festivals",t:"Lanterns",h:"135%",g:["#f0a548","#7a1f2e"]},
+ {c:"Portraits",t:"Window light",h:"115%",g:["#cdbfae","#6a5546"]},
+ {c:"Travel",t:"Old town",h:"95%",g:["#c98e6b","#2f3a4e"]},
+ {c:"Street",t:"Late tea",h:"85%",g:["#7e8a6f","#1e2a22"]},
+ {c:"Festivals",t:"Dust & drums",h:"110%",g:["#d96a3a","#2a1a3a"]}
+];
+var cats=["All","Portraits","Travel","Street","Festivals"],cur="All";
+var tabs=document.getElementById("tabs"),grid=document.querySelector(".grid"),lb=document.getElementById("lb"),lbc=document.getElementById("lbc");
+function tileInner(p,big){
+  if(p.src)return '<img src="'+p.src+'" alt="'+p.t+'">';
+  return '<div class="'+(big?'big':'ph')+'" style="'+(big?'':'padding-top:'+p.h+';')+'background:linear-gradient(160deg,'+p.g[0]+','+p.g[1]+')"></div>';
+}
+function render(){
+  tabs.innerHTML=cats.map(function(c){return '<button class="'+(c===cur?'on':'')+'" data-c="'+c+'">'+c+'</button>'}).join("");
+  grid.innerHTML=photos.map(function(p,i){return (cur==="All"||p.c===cur)?'<div class="tile" data-i="'+i+'">'+tileInner(p)+'<div class="cap">'+p.t+' — '+p.c+'</div></div>':''}).join("");
+}
+tabs.addEventListener("click",function(e){if(e.target.dataset.c){cur=e.target.dataset.c;render()}});
+grid.addEventListener("click",function(e){var t=e.target.closest(".tile");if(!t)return;lbc.innerHTML=tileInner(photos[t.dataset.i],true);lb.classList.add("open")});
+lb.addEventListener("click",function(){lb.classList.remove("open")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("open")});
+render();
+</script>
+</body>
+</html>
